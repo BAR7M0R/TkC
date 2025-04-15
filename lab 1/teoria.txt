@@ -1,0 +1,8 @@
+% UZUPEŁNIĆ OBLICZENIA ZE WZORÓW
+%
+Am=1;
+S_nrzt=(Am^2/Rb)*sinc(Freq/Rb).^2;
+S_rzt=((Am/2)^2/Rb)*sinc(Freq/(Rb*2)).^2;
+A=pi*Freq/Rb;
+S_millert=(Am^2/Rb)*1./(2*A.^2.*(17+8*cos(8*A))).*(23-2*cos(A)-22*cos(2*A)-12*cos(3*A)+5*cos(4*A)+12*cos(5*A)+2*cos(6*A)-8*cos(7*A)+2*cos(8*A));
+S_manchestert=(Am^2/Rb)*sinc(A/(pi*2)).^2.*sin(A/2).^2;
