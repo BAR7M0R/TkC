@@ -53,7 +53,7 @@ plot(signal)
 xlabel("sample")
 ylabel("signal, V or A")
 
-k = [1,2,4,5,10,20,50,100];
+k = [1,2,4,510,20,50,100];
 
 fp_in=k.*Rb; % przyjęte częstotliwości próbkowania (najmniejsza odpowiada prędkości binarnej) -> Hz
 fp_max = max(fp_in);
