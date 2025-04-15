@@ -31,12 +31,12 @@ plot(Freq,S); % psd liniowo
 axis([0 10*Rb 0 1.1*max(S)])
 xlabel('frequency, Hz','Interpreter','latex')
 ylabel('$PSD,  \frac{W}{Hz}$','Interpreter','latex')
-xticks([0 : Rb : 10*Rb])
+xticks(0 : Rb : 10*Rb)
 figure('Name',"PSD in logaritmic scale for signal")
 S_dB = 20*log10(S);
 plot(Freq,S_dB) % psd decybelowo
 axis([0 10*Rb 1.1*min(S_dB) -4])
-xticks([0 : Rb : 10*Rb])
+xticks(0 : Rb : 10*Rb)
 xlabel("frequency, Hz")
 ylabel('$PSD,  dB$','Interpreter','latex')
 
@@ -46,37 +46,35 @@ ylabel('$PSD,  dB$','Interpreter','latex')
 % lub metodą korelacyjną
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-fp_in=[1,2,4,5,10, 20, 40, 50, 100]*10; 
-dec_factor_in=fp_max./fp_in;     %współczynniki decymacji na wejściu filtru
-dec_factor_out=fp_in/Rb;         %współczynniki decymacji nw wyjściu filtru
 
-inf_impulse=signal(1:fp_max/Rb:end)';
+signal_AWGN = signal;
+figure(name="received AWGN signal")
+plot(signal)
+xlabel("sample")
+ylabel("signal, V or A")
 
-input_mtx=reshape(signal,fp_max/Rb,[]); %macierz, kolumnowo sygnały poszczególnych bitów
+k = [1,2,4,5,10,20,50,100];
 
-signal_dec_power=mean(inf_impulse.^2);
+fp_in=k.*Rb; % przyjęte częstotliwości próbkowania (najmniejsza odpowiada prędkości binarnej) -> Hz
+fp_max = max(fp_in);
+fp_out = Rb;
 
+decymation_factor_in=fp_max./fp_in;     %współczynniki decymacji na wejściu filtru -> Hz/Hz
+decymation_factor_out=fp_in/Rb;         %współczynniki decymacji nw wyjściu filtru -> Hz/(bit/s) -> 1/bit
+
+oversampling = fp_max/Rb;
+
+%signal_decymation_power=mean(inf_impulse.^2); % -> W
 for i=1:length(fp_in)
-    mtx_in{i}=input_mtx(1:dec_factor_in(i):end,:);   %próbkowanie na wejściu i kolumnowo poszczególne bity
-    impulse_shape{i}=ones(fp_in(i)/Rb,1)/(fp_in(i)/Rb); %konstrukcja impulsu kształtującego
-    mtx_out{i}=sum(mtx_in{i}.*impulse_shape{i},1);            %korelacja 
-    noise_mtx_dec(i,:)=mtx_out{i}-inf_impulse;        %obliczenie składnika szumowego 
-    signal_out(i,:)=mtx_out{i};
-    noise_mtx_dec_power(i)=mean(noise_mtx_dec(i,:).^2);  %obliczenie jego mocy
-    SNR_dec_c(i)=20*log10(signal_dec_power/noise_mtx_dec_power(i));  %obliczenie SNR
+    nrz_in{i}=signal_AWGN(1:decymation_factor_in(i):end);   % próbkowanie an wejściu filtru -> V or A
+    matched_filter{i}=ones(1,fp_in(i)/Rb)/(fp_in(i)/Rb); %konstrukcja filtru dopasowanego -> bit/bit 
+    signal_out{i}=filter(matched_filter{i},1, nrz_in{i}); %filtracja w filtrze dopasownym -> V
+    signal_out_decymation{i}=signal_out{i}(decymation_factor_out(i):decymation_factor_out(i):end); %decymacja za filtrem
+
 end
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%
-% WYKRES
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-figure(name="SNR for correlation receive")
-plot(fp_in, SNR_dec_c,'o')
-xlabel("frequency, Hz")
-ylabel("SNR, $\frac{W}{W}$", "Interpreter","latex")
+threshold_compared_signal_out = signal_out_decymation{8}>0; 
 
-tekst=bity2text(signal_out)
+tekst=bity2text(threshold_compared_signal_out)
 
 
