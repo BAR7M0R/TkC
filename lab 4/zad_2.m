@@ -11,7 +11,7 @@ CP=10;     %rozmiar prefiksu
 SNR=50;    %stosunek mocy sygnału do mocy szumu
 
 %% Generacja sygnału OFDM
-podpunkt='c'; %wybierz a lub b lub c
+podpunkt='a'; %wybierz a lub b lub c
 
 switch podpunkt %odpowiedzi impulsowe
     case 'c'
@@ -22,6 +22,7 @@ end
 
 % generacja sygnału OFDM
 [ofdm_signal,ofdm_symbols,binary_data]=ofdm_signal_generator(B,P,N,CP,SNR,channel_IR);
+
 
 switch  podpunkt
 
@@ -63,8 +64,8 @@ signal_freq=fft(signal_without_CP); % transformacja na stronę częstotliwościo
 %
 %
 % UZUPEŁNIĆ
-%equ=1./fft(channel_IR,N);
-%signal_freq=signal_freq.*equ.';
+equ=1./fft(channel_IR,N);
+signal_freq=signal_freq.*equ.';
 %%%%%
 symbols_QAM=signal_freq(:);
 scatterplot(symbols_QAM); % wyświetlenie wszystkich symboli %wyświetlenie symboli z wybranego podkanału
