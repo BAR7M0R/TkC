@@ -1,0 +1,17 @@
+Grupa 1
+Pasmo: S-Band High-Power
+1) Odległość: 300 mln km
+   Prędkość symbolowa: 30000 symb./sek
+   Modulacja: 16-QAM
+2) Odległość: 5000 mln km
+   Prędkość symbolowa: 4000 symb./sek
+   Modulacja: BPSK / QPSK
+
+Grupa 2
+Pasmo: X-Band High Power
+1) Odległość: 500 mln km
+   Prędkość symbolowa: 50000 symb./sek
+   Modulacja: 16-QAM
+1) Odległość: 24000 mln km
+   Prędkość symbolowa: 1500 symb./sek
+   Modulacja: BPSK / QPSK
