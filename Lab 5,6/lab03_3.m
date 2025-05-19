@@ -6,21 +6,21 @@ figure(1); % colororder("gem12");
 figure(2); % colororder("gem12");
 
 B = 6000; % liczba bitów informacyjnych w symulacji Monte-Carlo
-MQam = 4; % liczba punktów w konstelacji M-QAM
+MQam = [4, 16, 64, 256]; % liczba punktów w konstelacji M-QAM
 SNRdB_vector = 0.0:1:30.0; % wektor wartosci SNR, dla ktorych będą kolejno wykonywane symulacje
 SER_limit = 1e-5; % limit SER, poniżej którego symulacje są przerywane
 
-legendLabels = [];
+legendLabels = ["4-QAM","16-QAM","64-QAM","256-QAM"];
 
 % Symulacja dla modulacji o konstelacji MQam-punktowej
 % UZUPEŁNIĆ:
 % a) powtórzyć (zapętlić) dla innych konstelacji
 % b) dodatkowy wykres - BER w funkcji odległości od sondy
-% d = logspace(11,13, 20); 
-% ...
-% SNRdB = ... % obliczyć jak w zadaniu 1
-% ...
-% loglog(d/1e9, BER_calc, '-x');
+d = logspace(11,13, 20); 
+
+%SNRdB = ... % obliczyć jak w zadaniu 1
+
+ loglog(d/1e9, BER_calc, '-x');
 %
 
 
