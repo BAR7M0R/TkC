@@ -1,0 +1,42 @@
+---------------------------------------
+Grupa 1
+
+Lab3: tranmisja niekodowana
+Pasmo: S-Band High-Power
+1) Odległość: 300 mln km
+   Prędkość symbolowa: 30000 symb./sek
+   Modulacja: 16-QAM
+2) Odległość: 5000 mln km
+   Prędkość symbolowa: 4000 symb./sek
+   Modulacja: BPSK / QPSK
+
+Lab7: kodowanie
+Zad.1
+a) 1899
+b) 2B3A (hex)
+Zad.2
+Kody Hamminga:
+(7,4)
+(31,26)
+
+
+---------------------------------------
+Grupa 2
+
+Lab3: tranmisja niekodowana
+Pasmo: X-Band High Power
+1) Odległość: 500 mln km
+   Prędkość symbolowa: 50000 symb./sek
+   Modulacja: 16-QAM
+2) Odległość: 24000 mln km
+   Prędkość symbolowa: 1500 symb./sek
+   Modulacja: BPSK / QPSK
+
+Lab7: kodowanie
+Zad.1
+a) 1745
+b) 2F59 (hex)
+Zad.2
+Kody Hamminga:
+(7,4)
+(31,26)
