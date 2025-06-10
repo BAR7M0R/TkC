@@ -1,0 +1,28 @@
+---------------------------------------
+Grupa 1
+Pasmo: S-Band High-Power
+1) Odległość: 300 mln km
+   Prędkość symbolowa: 30000 symb./sek
+   Modulacja: 16-QAM
+   Zaproponować kodowanie (BCH / polarne)
+2) Odległość: 5000 mln km
+   Prędkość symbolowa: 4000 symb./sek
+   Modulacja: BPSK / QPSK
+   Zaproponować kodowanie (BCH (?) / polarne)
+3) Odległość 1000 mln km
+   Zaproponować modulację, prędkość symbolową oraz kodowanie, tak, aby uzyskać jak największą prędkość informacyjną.
+
+---------------------------------------
+Grupa 2
+
+Pasmo: X-Band High Power
+1) Odległość: 500 mln km
+   Prędkość symbolowa: 50000 symb./sek
+   Modulacja: 16-QAM
+   Zaproponować kodowanie (BCH / polarne)
+2) Odległość: 24000 mln km
+   Prędkość symbolowa: 1500 symb./sek
+   Modulacja: BPSK / QPSK
+   Zaproponować kodowanie (BCH (?) / polarne)
+3) Odległość 2500 mln km
+   Zaproponować modulację, prędkość symbolową oraz kodowanie, tak, aby uzyskać jak największą prędkość informacyjną.
